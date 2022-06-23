@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 1,
+    count: 0,
     tags: ["tag1", "tag2", "tag3"],
     // imageUrl: "https://picsum.photos/200",
   };
@@ -44,8 +44,8 @@ class Counter extends Component {
         >
           Increment
         </button>
-        {this.state.tags.length === 0 && <p>Please add a tag!</p>}
-        {this.renderTags()}
+        {/* {this.state.tags.length === 0 && <p>Please add a tag!</p>} */}
+        {/* {this.renderTags()} */}
       </React.Fragment>
     );
   }
