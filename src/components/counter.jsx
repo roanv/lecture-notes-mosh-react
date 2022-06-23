@@ -8,6 +8,27 @@ class Counter extends Component {
   };
   // generally use classes and avoid setting style directly
   //   styles = { fontSize: 10, fontWeight: "bold" };
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  //   constructor() {
+  //     super();
+  //     this.handleIncrement = this.handleIncrement.bind(this);
+  //   }
+  //   handleIncrement() {this.state.count}
+
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -15,12 +36,14 @@ class Counter extends Component {
         {/* <span style={this.styles}> */}
         {/* <span className="badge bg-primary m-2"> */}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
+        {this.state.tags.length === 0 && <p>Please add a tag!</p>}
+        {this.renderTags()}
       </React.Fragment>
     );
   }
