@@ -36,6 +36,17 @@ class App extends Component {
     counters[index].value++;
     this.setState({ counters });
   };
+  handleDecrement = (counter) => {
+    // const counters = this.state.counters.map((c) => {
+    //   if (c.id === counter.id) c.value++;
+    // });
+    if (counter.value < 1) return;
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
 
   render() {
     return (
@@ -49,6 +60,7 @@ class App extends Component {
             onDelete={this.handleDelete}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
           />
           <Movies />
         </main>

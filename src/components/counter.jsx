@@ -33,39 +33,55 @@ class Counter extends Component {
   // };
 
   render() {
-    const { onDelete, onIncrement, counter } = this.props;
+    const { onDelete, onIncrement, onDecrement, counter } = this.props;
     return (
-      <div className="col">
-        {/* <img src={this.state.imageUrl} alt="" />  */}
-        {/* <span style={this.styles}> */}
-        {/* <span className="badge bg-primary m-2"> */}
-        {/* this.props.children renders h4 counter # from counters.jsx */}
-        {/* {this.props.children} */}
-        <span className={this.getBadgeClasses(counter)}>
-          {this.formatCount(counter)}
-        </span>
-        <button
-          //   onClick={this.handleIncrement}
-          // onClick={() => this.handleIncrement({ name: "bananas" })} // to pass arguments
-          onClick={() => onIncrement(counter)}
-          className="btn btn-secondary btn-sm"
-        >
-          Increment
-        </button>
-        <button
-          onClick={() => onDelete(counter)}
-          className="btn btn-danger btn-sm m-2"
-        >
-          Delete
-        </button>
+      <div className="row align-items-center">
+        <div className="col-1">
+          {/* <img src={this.state.imageUrl} alt="" />  */}
+          {/* <span style={this.styles}> */}
+          {/* <span className="badge bg-primary m-2"> */}
+          {/* this.props.children renders h4 counter # from counters.jsx */}
+          {/* {this.props.children} */}
+          <span className={this.getBadgeClasses(counter)}>
+            {this.formatCount(counter)}
+          </span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => onDecrement(counter)}
+            className={this.getDecrementStyle(counter)}
+          >
+            -
+          </button>
+          <button
+            //   onClick={this.handleIncrement}
+            // onClick={() => this.handleIncrement({ name: "bananas" })} // to pass arguments
+            onClick={() => onIncrement(counter)}
+            className="btn btn-secondary btn-sm"
+          >
+            +
+          </button>
+          <button
+            onClick={() => onDelete(counter)}
+            className="btn btn-danger m-2 btn-sm"
+          >
+            Delete
+          </button>
+        </div>
         {/* {this.state.tags.length === 0 && <p>Please add a tag!</p>} */}
         {/* {this.renderTags()} */}
       </div>
     );
   }
 
+  getDecrementStyle(counter) {
+    let style = "btn m-2 btn-sm btn-";
+    counter.value <= 0 ? (style += "light") : (style += "secondary");
+    return style;
+  }
+
   getBadgeClasses(counter) {
-    let classes = "badge m-2 bg-";
+    let classes = "badge bg-";
     classes += counter.value === 0 ? "warning" : "primary";
     return classes;
   }
