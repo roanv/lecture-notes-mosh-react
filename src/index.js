@@ -1,11 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Counters from './components/counters'
-import App from './app'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./app";
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
+import "bootstrap/dist/css/bootstrap.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+library.add(fas, far);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 // const element = <h1>Hello World</h1>;
-root.render(<App/>);
+root.render(<App />);
