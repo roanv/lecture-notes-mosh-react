@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Like extends Component {
   render() {
-    return <FontAwesomeIcon icon="fa-regular fa-heart" />;
+    let icon = "fa-heart fa-";
+    this.props.liked ? (icon += "solid") : (icon += "regular");
+    return <FontAwesomeIcon icon={icon} />;
   }
 }
 
