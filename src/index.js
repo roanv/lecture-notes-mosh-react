@@ -8,4 +8,4 @@ import 'font-awesome/css/font-awesome.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // const element = <h1>Hello World</h1>;
-root.render(<Counters/>);
+root.render(<App/>);
