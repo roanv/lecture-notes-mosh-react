@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class Like extends Component {
-  render() {
-    let icon = "fa-heart fa-";
-    this.props.liked ? (icon += "solid") : (icon += "regular");
-    return <FontAwesomeIcon icon={icon} />;
-  }
-}
+const Like = (props) => {
+  let icon = "fa-heart fa-";
+  props.liked ? (icon += "solid") : (icon += "regular");
+  return (
+    <FontAwesomeIcon onClick={props.onClick} icon={icon} className="btn" />
+  );
+};
 
 export default Like;

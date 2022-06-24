@@ -10,6 +10,14 @@ class Movies extends Component {
     this.setState({ movies: getMovies() });
   }
 
+  handleLike(movie) {
+    const movies = [...this.state.movies];
+    const index = movies.indexOf(movie);
+    movies[index] = { ...movie };
+    movies[index].liked = !movies[index].liked;
+    this.setState({ movies });
+  }
+
   render() {
     const { movies } = this.state;
     if (movies.length === 0) return <p>No movies found.</p>;
@@ -35,7 +43,10 @@ class Movies extends Component {
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                  <Like liked={movie.liked} />
+                  <Like
+                    onClick={() => this.handleLike(movie)}
+                    liked={movie.liked}
+                  />
                 </td>
                 <td>
                   <button
