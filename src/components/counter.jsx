@@ -49,7 +49,8 @@ class Counter extends Component {
         <div className="col">
           <button
             onClick={() => onDecrement(counter)}
-            className={this.getDecrementStyle(counter)}
+            className="btn m-2 btn-sm btn-secondary"
+            disabled={counter.value <= 0}
           >
             -
           </button>
@@ -72,12 +73,6 @@ class Counter extends Component {
         {/* {this.renderTags()} */}
       </div>
     );
-  }
-
-  getDecrementStyle(counter) {
-    let style = "btn m-2 btn-sm btn-";
-    counter.value <= 0 ? (style += "light") : (style += "secondary");
-    return style;
   }
 
   getBadgeClasses(counter) {
