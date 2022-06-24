@@ -33,43 +33,46 @@ class Counter extends Component {
   // };
 
   render() {
+    const { onDelete, onIncrement, counter } = this.props;
     return (
-      <React.Fragment>
+      <div className="col">
         {/* <img src={this.state.imageUrl} alt="" />  */}
         {/* <span style={this.styles}> */}
         {/* <span className="badge bg-primary m-2"> */}
         {/* this.props.children renders h4 counter # from counters.jsx */}
         {/* {this.props.children} */}
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <span className={this.getBadgeClasses(counter)}>
+          {this.formatCount(counter)}
+        </span>
         <button
           //   onClick={this.handleIncrement}
           // onClick={() => this.handleIncrement({ name: "bananas" })} // to pass arguments
-          onClick={() => this.props.onIncrement(this.props.counter)}
+          onClick={() => onIncrement(counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
         </button>
         <button
-          onClick={() => this.props.onDelete(this.props.counter)}
+          onClick={() => onDelete(counter)}
           className="btn btn-danger btn-sm m-2"
         >
           Delete
         </button>
         {/* {this.state.tags.length === 0 && <p>Please add a tag!</p>} */}
         {/* {this.renderTags()} */}
-      </React.Fragment>
+      </div>
     );
   }
 
-  getBadgeClasses() {
+  getBadgeClasses(counter) {
     let classes = "badge m-2 bg-";
-    classes += this.props.counter.value === 0 ? "warning" : "primary";
+    classes += counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
-  formatCount() {
+  formatCount(counter) {
     // const { value: count } = this.state;
-    const { value } = this.props.counter;
+    const { value } = counter;
     // return count === 0 ? <b>Zero</b> : count;
     return value === 0 ? "Zero" : value;
   }
