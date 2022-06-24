@@ -4,7 +4,7 @@ const NavBar = (props) => {
     <nav className="navbar navbar-light bg-light">
       <a href="#" className="navbar-brand">
         Navbar{" "}
-        <span className="badge badge-pill badge-secondary">
+        <span className="badge bg-pill bg-secondary">
           {props.totalCounters}
         </span>
       </a>
