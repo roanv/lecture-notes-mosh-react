@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Movies from "./components/movies";
 import { Route, Redirect, Switch } from "react-router-dom";
+import Movies from "./components/movies";
 import NotFound from "./components/notFound";
 import Rentals from "./components/rentals";
 import Customers from "./components/customers";
+import NavBar from "./components/navbar";
 
 class App extends Component {
   state = {
@@ -52,16 +53,19 @@ class App extends Component {
 
   render() {
     return (
-      <main className="container mt-4">
-        <Switch>
-          <Route path="/movies" component={Movies}></Route>
-          <Route path="/customers" component={Customers}></Route>
-          <Route path="/rentals" component={Rentals}></Route>
-          <Route path="/not-found" component={NotFound}></Route>
-          <Redirect exact from="/" to="/movies"></Redirect>
-          <Redirect to="/not-found"></Redirect>
-        </Switch>
-      </main>
+      <React.Fragment>
+        <NavBar />
+        <main className="container">
+          <Switch>
+            <Route path="/movies" component={Movies}></Route>
+            <Route path="/customers" component={Customers}></Route>
+            <Route path="/rentals" component={Rentals}></Route>
+            <Route path="/not-found" component={NotFound}></Route>
+            <Redirect exact from="/" to="/movies"></Redirect>
+            <Redirect to="/not-found"></Redirect>
+          </Switch>
+        </main>
+      </React.Fragment>
     );
   }
 }
