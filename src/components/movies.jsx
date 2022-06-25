@@ -23,7 +23,6 @@ class Movies extends Component {
 
   handleDelete = (movieId) => {
     deleteMovie(movieId);
-    console.log(getMovies());
     this.setState({ movies: getMovies() });
   };
 
