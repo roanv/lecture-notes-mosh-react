@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Like = (props) => {
+const Like = ({ liked, onClick }) => {
   let icon = "fa-heart fa-";
-  props.liked ? (icon += "solid") : (icon += "regular");
+  liked ? (icon += "solid") : (icon += "regular");
   return (
-    <FontAwesomeIcon
-      onClick={props.onClick}
-      icon={icon}
-      className="clickable"
-    />
+    <FontAwesomeIcon onClick={onClick} icon={icon} className="clickable" />
   );
 };
 
