@@ -9,3 +9,7 @@ body {
 .clickable{
     cursor:pointer;
 }
+
+.form-group{
+    padding-bottom: 15px;
+}
