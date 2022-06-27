@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "./common/form";
 import Joi from "joi-browser";
-import { Link } from "react-router-dom";
 
-class LoginForm extends Form {
+class RegisterForm extends Form {
   state = {
-    data: { username: "", password: "" },
+    data: { username: "", password: "", name: "" },
     errors: {},
   };
 
   schema = {
     username: Joi.string().required().label("Username").email(),
     password: Joi.string().required().label("Password").min(5),
+    password: Joi.string().optional().label("Name").allow(""),
   };
 
   submit = () => {
@@ -21,20 +21,17 @@ class LoginForm extends Form {
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username", "email")}
           {this.renderInput("password", "Password", "password")}
-          <div className="btn-toolbar">
-            {this.renderSubmit("Login")}
-            <Link className="btn btn-secondary mx-2" to="/register">
-              Register
-            </Link>
-          </div>
+          {this.renderInput("confirmPassword", "Confirm Password", "password")}
+          {this.renderInput("name", "Name")}
+          {this.renderSubmit("Register")}
         </form>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;
