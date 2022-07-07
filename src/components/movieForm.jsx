@@ -6,17 +6,18 @@ import { getMovie, saveMovie } from "../services/fakeMovieService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", stock: "", rate: "", genre: "" },
+    data: { title: "", numberInStock: "", dailyRentalRate: "", genreId: "" },
     genres: [],
     errors: {},
     // genres: [],
   };
 
   schema = {
+    id: Joi.string(),
     title: Joi.string().required().label("Title"),
-    genre: Joi.string().required().label("Genre"),
-    stock: Joi.number().required().label("Number in Stock"),
-    rate: Joi.number().required().label("Daily Rental Rate"),
+    genreId: Joi.string().required().label("Genre"),
+    numberInStock: Joi.number().required().label("Number in Stock"),
+    dailyRentalRate: Joi.number().required().label("Daily Rental Rate"),
   };
 
   componentDidMount() {
@@ -33,15 +34,15 @@ class MovieForm extends Form {
   getViewData = (movie) => {
     return {
       id: movie.id,
-      genre: movie.genre.id,
+      genreId: movie.genre.id,
       title: movie.title,
-      stock: movie.numberInStock,
-      rate: movie.dailyRentalRate,
+      numberInStock: movie.numberInStock,
+      dailyRentalRate: movie.dailyRentalRate,
     };
   };
 
   submit = () => {
-    saveMovie(this.props.data);
+    saveMovie(this.state.data);
     this.props.history.push("/movies");
   };
 
@@ -49,12 +50,12 @@ class MovieForm extends Form {
     const { match } = this.props;
     return (
       <div>
-        <h1>Movie {match.params.id}</h1>
+        <h1>Movie Form</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("title", "Title")}
-          {this.renderSelect("genre", "Genre", this.state.genres)}
-          {this.renderInput("stock", "Number in Stock", "number")}
-          {this.renderInput("rate", "Rate")}
+          {this.renderSelect("genreId", "Genre", this.state.genres)}
+          {this.renderInput("numberInStock", "Number in Stock", "number")}
+          {this.renderInput("dailyRentalRate", "Rate")}
           {this.renderSubmit("Save")}
         </form>
       </div>
