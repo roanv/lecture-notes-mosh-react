@@ -9,7 +9,11 @@ class MoviesTable extends Component {
       path: "title",
       label: "Title",
       content: (movie) => (
-        <Link className="text-decoration-none" to={`/movies/${movie.id}`}>
+        <Link
+          movie={movie}
+          className="text-decoration-none"
+          to={`/movies/${movie.id}`}
+        >
           {movie.title}
         </Link>
       ),

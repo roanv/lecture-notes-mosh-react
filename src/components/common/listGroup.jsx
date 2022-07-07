@@ -9,7 +9,7 @@ const ListGroup = (props) => {
     selectedItem: selectedItem,
   } = props;
   return (
-    <ul className="list-group">
+    <ul className="list-group p-0">
       {items.map((item) => (
         <li
           key={item[valueProperty]}
